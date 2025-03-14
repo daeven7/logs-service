@@ -4,6 +4,10 @@ import { wss } from './queue/events';
 import uploadLogs from './api/uploadLogs';
 import stats from './api/stats';
 import queueStatus from './api/queueStatus';
+import cookieParser from 'cookie-parser';
+import { authenticateToken } from './middleware';
+
+
 
 dotenv.config();
 
@@ -11,8 +15,11 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 const cors = require('cors');
-app.use(cors({ origin: 'http://localhost:3000' }));
 
+app.use(cookieParser());
+app.use(cors({ origin: 'http://localhost:3000' , credentials:true}));
+
+app.use("/api", authenticateToken)
 app.use('/api', uploadLogs);
 app.use('/api', stats);
 app.use('/api', queueStatus);
