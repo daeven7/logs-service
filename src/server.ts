@@ -21,15 +21,6 @@ const server = app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
 
-// server.on('upgrade', (request, socket, head) => {
-//   if (request.url === '/api/live-stats') {
-//     wss.handleUpgrade(request, socket, head, (ws) => {
-//       wss.emit('connection', ws, request);
-//     });
-//   } else {
-//     socket.destroy();
-//   }
-// });
 
 server.on('upgrade', (request, socket, head) => {
   console.log(`Upgrade request received: ${request.url}`);
