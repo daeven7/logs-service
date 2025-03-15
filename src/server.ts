@@ -19,25 +19,49 @@ const cors = require('cors');
 app.use(cookieParser());
 app.use(cors({ origin: 'http://localhost:3000' , credentials:true}));
 
-app.use("/api", authenticateToken)
+console.log("node env", process.env.NODE_ENV)
+console.log("redis url", process.env.REDIS_URL)
+if (process.env.NODE_ENV !== 'test') {
+  app.use("/api", authenticateToken);
+}
+// app.use("/api", authenticateToken)
 app.use('/api', uploadLogs);
 app.use('/api', stats);
 app.use('/api', queueStatus);
 
-const server = app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+// const server = app.listen(PORT, () => {
+//   console.log(`Server running on port ${PORT}`);
+// });
 
 
-server.on('upgrade', (request, socket, head) => {
-  console.log(`Upgrade request received: ${request.url}`);
-  if (request.url === '/api/live-stats') {
-    wss.handleUpgrade(request, socket, head, (ws) => {
-      console.log('WebSocket connection established');
-      wss.emit('connection', ws, request);
-    });
-  } else {
-    socket.destroy();
-    console.log('Unknown upgrade request, connection destroyed');
-  }
-});
+// server.on('upgrade', (request, socket, head) => {
+//   console.log(`Upgrade request received: ${request.url}`);
+//   if (request.url === '/api/live-stats') {
+//     wss.handleUpgrade(request, socket, head, (ws) => {
+//       console.log('WebSocket connection established');
+//       wss.emit('connection', ws, request);
+//     });
+//   } else {
+//     socket.destroy();
+//     console.log('Unknown upgrade request, connection destroyed');
+//   }
+// });
+
+if (process.env.NODE_ENV !== 'test') {
+  const PORT = process.env.PORT || 4000;
+  const server = app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+  });
+
+  server.on('upgrade', (request, socket, head) => {
+    if (request.url === '/api/live-stats') {
+      wss.handleUpgrade(request, socket, head, (ws) => {
+        wss.emit('connection', ws, request);
+      });
+    } else {
+      socket.destroy();
+    }
+  });
+}
+
+export default app
