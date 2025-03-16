@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "keywords": [],
   "author": "",
@@ -11,19 +12,33 @@
   "description": "",
   "dependencies": {
     "@supabase/supabase-js": "^2.49.1",
+    "axios": "^1.8.3",
+    "base-64": "^1.0.0",
     "bullmq": "^5.41.8",
+    "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "ioredis": "^5.6.0",
+    "jest": "^29.7.0",
+    "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.5-lts.1",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "uuid": "^11.1.0",
     "ws": "^8.18.1"
   },
   "devDependencies": {
+    "@types/base-64": "^1.0.2",
+    "@types/cookie-parser": "^1.4.8",
     "@types/express": "^5.0.0",
+    "@types/jest": "^29.5.14",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/multer": "^1.4.12",
     "@types/node": "^22.13.10",
+    "@types/supertest": "^6.0.2",
     "@types/ws": "^8.18.0",
+    "ts-jest": "^29.2.6",
     "typescript": "^5.8.2"
   }
 }
