@@ -31,3 +31,5 @@ Run the  server:
 ```bash
 npx ts-node src/server.ts
 ```
+
+PS: Added dummy log files in the root directory which can be used for testing
