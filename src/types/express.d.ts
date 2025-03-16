@@ -1,19 +1,6 @@
+import "express";
 
-// import { DecodedToken } from "../middleware";
-
-// declare global {
-//   namespace Express {
-//     interface Request {
-//       user?: DecodedToken;
-//     }
-//   }
-// }
-
-
-
-import 'express';
-
-declare module 'express' {
+declare module "express" {
   interface Request {
     user?: {
       id: string;

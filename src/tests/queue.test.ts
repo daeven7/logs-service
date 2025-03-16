@@ -1,5 +1,4 @@
 import request from 'supertest';
-// import app from '../app'; // Adjust the path to where `app` is exported
 import { logProcessingQueue } from '../queue/queue';
 import app from '../server';
 
@@ -29,7 +28,7 @@ describe('Queue Status Router', () => {
       };
       (logProcessingQueue.getJobCounts as jest.Mock).mockResolvedValue(mockJobCounts);
 
-      const res = await request(app).get('/api/queue-status'); // Adjust the path if needed
+      const res = await request(app).get('/api/queue-status'); 
 
       expect(logProcessingQueue.getJobCounts).toHaveBeenCalled();
       expect(res.statusCode).toBe(200);
@@ -39,7 +38,7 @@ describe('Queue Status Router', () => {
     it('should handle errors and return a 500 status', async () => {
       (logProcessingQueue.getJobCounts as jest.Mock).mockRejectedValue(new Error('Queue error'));
 
-      const res = await request(app).get('/api/queue-status'); // Adjust the path if needed
+      const res = await request(app).get('/api/queue-status');
 
       expect(logProcessingQueue.getJobCounts).toHaveBeenCalled();
       expect(res.statusCode).toBe(500);
