@@ -1,99 +1,4 @@
-# version: "3.8"
 
-# services:
-#   redis:
-#     image: redis:6.2
-#     container_name: redis
-#     ports:
-#       - "6379:6379"
-#     volumes:
-#       - redis_data:/data
-
-#   worker:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: node_worker
-#     command: ts-node src/queue/worker.ts
-#     environment:
-#       - REDIS_URL=redis://redis:6379
-#       - SUPABASE_URL=https://yzultmotrelptzwfwtjh.supabase.co
-#       - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWx0bW90cmVscHR6d2Z3dGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE2MzU0ODEsImV4cCI6MjA1NzIxMTQ4MX0.ufexaJGGRDo5Z6N6xY0rlpc0i1_36Y42R9sG_iMWHGI
-#       - CONFIG_KEYWORDS=permissions,unauthorised
-#       - PORT=4000
-#       - JWT_SECRET=bgOQdheBe+16h0+PwJKedlpRSYu697Ee0xiruiDTslqqkcvuzv9EJKJPfs9rA1Il3dkSee+fie8NPiMjcyrb0Q==
-#     depends_on:
-#       - redis
-
-#   server:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: node_server
-#     command: npx ts-node src/server.ts
-#     ports:
-#       - "4000:4000"
-#     environment:
-#       - REDIS_URL=redis://redis:6379
-#       - SUPABASE_URL=https://yzultmotrelptzwfwtjh.supabase.co
-#       - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWx0bW90cmVscHR6d2Z3dGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE2MzU0ODEsImV4cCI6MjA1NzIxMTQ4MX0.ufexaJGGRDo5Z6N6xY0rlpc0i1_36Y42R9sG_iMWHGI
-#       - CONFIG_KEYWORDS=permissions,unauthorised
-#       - PORT=4000
-#       - JWT_SECRET=bgOQdheBe+16h0+PwJKedlpRSYu697Ee0xiruiDTslqqkcvuzv9EJKJPfs9rA1Il3dkSee+fie8NPiMjcyrb0Q==
-#     depends_on:
-#       - redis
-
-# volumes:
-#   redis_data:
-
-
-# version: "3.8"
-
-# services:
-#   redis:
-#     image: redis:6.2
-#     container_name: redis
-#     ports:
-#       - "6379:6379"
-#     volumes:
-#       - redis_data:/data
-
-#   worker:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: node_worker
-#     command: ts-node src/queue/worker.ts
-#     environment:
-#       - REDIS_URL=redis://redis:6379
-#       - SUPABASE_URL=https://yzultmotrelptzwfwtjh.supabase.co
-#       - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWx0bW90cmVscHR6d2Z3dGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE2MzU0ODEsImV4cCI6MjA1NzIxMTQ4MX0.ufexaJGGRDo5Z6N6xY0rlpc0i1_36Y42R9sG_iMWHGI
-#       - CONFIG_KEYWORDS=permissions,unauthorised
-#       - PORT=4000
-#       - JWT_SECRET=bgOQdheBe+16h0+PwJKedlpRSYu697Ee0xiruiDTslqqkcvuzv9EJKJPfs9rA1Il3dkSee+fie8NPiMjcyrb0Q==
-#     depends_on:
-#       - redis
-
-#   server:
-#     build:
-#       context: .
-#       dockerfile: Dockerfile
-#     container_name: node_server
-#     command: npx ts-node src/server.ts
-#     ports:
-#       - "4000:4000"
-#     environment:
-#       - REDIS_URL=redis://redis:6379
-#       - SUPABASE_URL=https://yzultmotrelptzwfwtjh.supabase.co
-#       - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWx0bW90cmVscHR6d2Z3dGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE2MzU0ODEsImV4cCI6MjA1NzIxMTQ4MX0.ufexaJGGRDo5Z6N6xY0rlpc0i1_36Y42R9sG_iMWHGI
-#       - CONFIG_KEYWORDS=permissions,unauthorised
-#       - PORT=4000
-#       - JWT_SECRET=bgOQdheBe+16h0+PwJKedlpRSYu697Ee0xiruiDTslqqkcvuzv9EJKJPfs9rA1Il3dkSee+fie8NPiMjcyrb0Q==
-#     depends_on:
-#       - redis
-
-# volumes:
-#   redis_data:
 
 version: "3.8"
 
@@ -113,7 +18,7 @@ services:
     container_name: node_worker
     command: ts-node src/queue/worker.ts
     environment:
-      - REDIS_URL=redis://redis:6379  # Use the service name 'redis' to connect to Redis
+      - REDIS_URL=redis://redis:6379 
       - SUPABASE_URL=https://yzultmotrelptzwfwtjh.supabase.co
       - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWx0bW90cmVscHR6d2Z3dGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE2MzU0ODEsImV4cCI6MjA1NzIxMTQ4MX0.ufexaJGGRDo5Z6N6xY0rlpc0i1_36Y42R9sG_iMWHGI
       - CONFIG_KEYWORDS=permissions,unauthorised
@@ -131,7 +36,7 @@ services:
     ports:
       - "4000:4000"
     environment:
-      - REDIS_URL=redis://redis:6379  # Use the service name 'redis' to connect to Redis
+      - REDIS_URL=redis://redis:6379 
       - SUPABASE_URL=https://yzultmotrelptzwfwtjh.supabase.co
       - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inl6dWx0bW90cmVscHR6d2Z3dGpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDE2MzU0ODEsImV4cCI6MjA1NzIxMTQ4MX0.ufexaJGGRDo5Z6N6xY0rlpc0i1_36Y42R9sG_iMWHGI
       - CONFIG_KEYWORDS=permissions,unauthorised

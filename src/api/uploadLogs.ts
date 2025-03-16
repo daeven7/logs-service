@@ -48,7 +48,7 @@ router.post(
         res.status(500).json({ error: "Failed to retrieve file metadata" });
         return;
       }
-      console.log("xxxxx", metadata?.size);
+
       const fileSize = metadata.size || 0;
       console.log(`File size for ${filePath}: ${fileSize}`);
 

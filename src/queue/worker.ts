@@ -72,7 +72,7 @@ if (cluster.isPrimary) {
           throw new Error("Keywords not defined in env");
 
         const keywords = process.env.CONFIG_KEYWORDS.split(",");
-        const batchSize = 100;
+        const batchSize = 500;
         let logsBatch: any[] = [];
 
         const insertLogsBatch = async () => {
@@ -137,7 +137,7 @@ if (cluster.isPrimary) {
               error: level === "ERROR",
               keywords: matchingKeywords.join(","),
               ip_address: ipAddress,
-              user_id: parsedPayload?.userId || null,
+              user_id: parsedPayload?.userId || parsedPayload?.user_Id || parsedPayload?.user_id || null,
               job_id: job.id,
             });
 
